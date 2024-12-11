@@ -1,0 +1,9 @@
+#Linear search
+
+def linear(a,target):
+    for i in range(len(a)):
+        if a[i]==target:
+            return i
+arr=[1,2,6,8,4,9,5,3]
+target=9
+print(linear(arr,target))
