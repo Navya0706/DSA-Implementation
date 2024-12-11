@@ -1,0 +1,85 @@
+class Node:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+
+# Tree Traversals
+
+# Inorder traversal
+def inorder(root):
+    if root is None:
+        return
+    inorder(root.left)
+    print(root.value, end=" ")
+    inorder(root.right)
+
+# Preorder traversal
+def preorder(root):
+    if root is None:
+        return
+    print(root.value, end=" ")
+    preorder(root.left)
+    preorder(root.right)
+
+# Postorder traversal
+def postorder(root):
+    if root is None:
+        return
+    postorder(root.left)
+    postorder(root.right)
+    print(root.value, end=" ")
+
+# Level order traversal
+def levelorder(root):
+    if root is None:
+        return
+    
+    queue = [root]
+    while queue:
+        current = queue.pop(0)
+        print(current.value, end=" ")
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
+# User menu
+def user_menu():
+    print("Binary Tree Operations:")
+    print("1. Inorder traversal")
+    print("2. Preorder traversal")
+    print("3. Postorder traversal")
+    print("4. Level order traversal")
+    print("0. Exit")
+
+# Main function to demonstrate operations
+def main():
+    root = None
+    while True:
+        user_menu()
+        choice = int(input("Enter your choice: "))
+        
+        if choice == 0:
+            break
+        elif choice == 1:
+            print("Inorder traversal:", end=" ")
+            inorder(root)
+            print()
+        elif choice == 2:
+            print("Preorder traversal:", end=" ")
+            preorder(root)
+            print()
+        elif choice == 3:
+            print("Postorder traversal:", end=" ")
+            postorder(root)
+            print()
+        elif choice == 4:
+            print("Level order traversal:", end=" ")
+            levelorder(root)
+            print()
+        else:
+            print("Invalid choice, please try again.")
+
+if __name__ == "__main__":
+    main()
