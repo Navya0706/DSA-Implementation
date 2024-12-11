@@ -1,0 +1,89 @@
+# Initialize stack and related variables
+arr = []
+top = -1
+max_size = 10  # Set a maximum size for the stack
+
+# Define stack operations
+def push(x):
+    global top
+    if top == max_size - 1:
+        print("Stack is full")
+    else:
+        top += 1
+        if len(arr) > top:
+            arr[top] = x
+        else:
+            arr.append(x)
+        print(f"Pushed {x} into the stack.")
+
+def pop():
+    global top
+    if top == -1:
+        print("Stack is empty")
+    else:
+        print(f"Popped {arr[top]} from the stack.")
+        top -= 1
+
+def peek():
+    if top == -1:
+        print("Stack is empty")
+    else:
+        print(f"Top element is {arr[top]}.")
+
+def isempty():
+    if top == -1:
+        print("Stack is empty")
+    else:
+        print("Stack is not empty")
+
+def isfull():
+    if top == max_size - 1:
+        print("Stack is full")
+    else:
+        print("Stack is not full")
+
+def print_stack():
+    if top == -1:
+        print("Stack is empty")
+    else:
+        print("Stack elements from bottom to top:")
+        for i in range(top + 1):
+            print(arr[i], end=" ")
+        print()  # Newline for better readability
+
+def size():
+    return top + 1
+
+# Main program loop
+while True:
+    print("\nStack Operations Menu:")
+    print("1. Push")
+    print("2. Pop")
+    print("3. Peek")
+    print("4. Check if Stack is Empty")
+    print("5. Check if Stack is Full")
+    print("6. Print Stack")
+    print("7. Get Size of Stack")
+    print("8. Exit")
+    choice = input("Enter your choice (1-8): ")
+
+    if choice == '1':
+        x = input("Enter value to push: ")
+        push(x)
+    elif choice == '2':
+        pop()
+    elif choice == '3':
+        peek()
+    elif choice == '4':
+        isempty()
+    elif choice == '5':
+        isfull()
+    elif choice == '6':
+        print_stack()
+    elif choice == '7':
+        print(f"Current stack size: {size()}")
+    elif choice == '8':
+        print("Exiting the program.")
+        break
+    else:
+        print("Invalid choice! Please select a valid option.")
