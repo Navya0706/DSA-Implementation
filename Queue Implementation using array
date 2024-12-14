@@ -1,85 +1,30 @@
-# Define queue operations
-def enqueue(x):
-    global f, r
-    if r == max_size - 1:
-        print("Queue is full")
-    else:
-        r += 1
-        if len(a) > r:
-            a[r] = x
+class Queue:
+    def __init__(self):
+        self.arr=[]
+    def enqueue(self,value):
+        self.arr.append(value)
+    def dequeue(self):
+        if not self.isempty():
+            return self.arr.pop(0)
         else:
-            a.append(x)
-        if f == -1:
-            f = 0
-        print(f"Enqueued {x} into the queue.")
-
-def dequeue():
-    global f, r
-    if f == -1 or f > r:
-        print("Queue is empty")
-    else:
-        print(f"Dequeued {a[f]} from the queue.")
-        if f == r:  # Only one element was in the queue
-            f = r = -1
+            return "Q is empty"
+    def peek(self):
+        if self.isempty():
+            return "Q is empty"
         else:
-            f += 1
+            return self.arr[0]
+    def isempty(self):
+        return len(arr)==0
+    def printarr(self):
+        return self.arr
+        
+queue=Queue()
+queue.enqueue(10)
+queue.enqueue(20)
+queue.enqueue(30)
+queue.enqueue(40)
 
-def peek():
-    if f == -1 or f > r:
-        print("Queue is empty")
-    else:
-        print(f"Front element is {a[f]}.")
-
-def isempty():
-    if f == -1 or f > r:
-        print("Queue is empty")
-
-def isfull():
-    if r == max_size - 1:
-        print("Queue is full")
-
-def size():
-    return r - f + 1
-
-def print_queue():
-    if f == -1 or f > r:
-        print("Queue is empty")
-    else:
-        print("Queue elements from front to rear:")
-        for i in range(f, r + 1):
-            print(a[i], end=" ")
-        print()  # Newline for better readability
-
-# Main program loop
-while True:
-    print("\nQueue Operations Menu:")
-    print("1. Enqueue")
-    print("2. Dequeue")
-    print("3. Peek")
-    print("4. Check if Queue is Empty")
-    print("5. Check if Queue is Full")
-    print("6. Get Size of Queue")
-    print("7. Print Queue")
-    print("8. Exit")
-    choice = input("Enter your choice (1-8): ")
-
-    if choice == '1':
-        x = input("Enter value to enqueue: ")
-        enqueue(x)
-    elif choice == '2':
-        dequeue()
-    elif choice == '3':
-        peek()
-    elif choice == '4':
-        isempty()
-    elif choice == '5':
-        isfull()
-    elif choice == '6':
-        print(f"Current queue size: {size()}")
-    elif choice == '7':
-        print_queue()
-    elif choice == '8':
-        print("Exiting the program.")
-        break
-    else:
-        print("Invalid choice! Please select a valid option.")
+print(queue.printarr())
+print(queue.peek())   
+print(queue.dequeue())    
+print(queue.isempty()) 
