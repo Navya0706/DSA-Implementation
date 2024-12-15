@@ -1,0 +1,90 @@
+#Class & Objects
+class Math:
+    def add(self,a,b):
+        return a+b
+    def sub(self,a,b):
+        return a-b
+    def mul(self,a,b):
+        return a*b
+    def div(self,a,b):
+        return a//b
+
+m=Math()
+print(m.add(4,5))
+print(m.sub(6,3))
+print(m.mul(5,5))
+print(m.div(25,5))
+
+#Encapsulation
+
+class Math:
+    def add(self,a,b):
+        return a+b
+m=Math()
+print(m.add(4,5))
+
+#Inheritence
+
+class Math:
+    def add(self,a,b):
+        return a+b
+    def sub(self,a,b):
+        return a-b
+    def mul(self,a,b):
+        return a*b
+    def div(self,a,b):
+        return a//b
+
+m=Math()
+
+class AdvMath(Math):
+    def pow(self,a,b):
+        return a**b
+am=AdvMath()
+print(am.pow(2,3))
+print(am.add(2,4))
+
+
+#polymorphism
+
+class Math:
+    def add(self,a,b):
+        return a+b
+    def sub(self,a,b):
+        return a-b
+    def mul(self,a,b):
+        return a*b
+    def div(self,a,b):
+        return a//b
+
+m=Math()
+
+class FloatMath(Math):
+    def div(self, a, b):
+        return a / b 
+
+fm = FloatMath()
+print(fm.div(25, 5))  
+
+
+#Abstraction
+from abc import ABC, abstractmethod
+
+class AbstractMath(ABC):
+    @abstractmethod
+    def add(self, a, b):
+        pass
+
+    @abstractmethod
+    def sub(self, a, b):
+        pass
+
+class Math(AbstractMath):
+    def add(self, a, b):
+        return a + b
+
+    def sub(self, a, b):
+        return a - b
+
+m=Math()
+print(m.add(5,5))
