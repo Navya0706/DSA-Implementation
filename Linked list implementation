@@ -1,175 +1,97 @@
+#Linked list
+
 class Node:
-    def __init__(self, data):
-        self.data = data
-        self.next = None
+    def __init__(self,value):
+        self.value=value
+        self.next=None
+class LinkedList:
+    def __init__(self):
+        self.head=None
 
-# Operations
+    def insertbegin(self,value):
+        newnode=Node(value)
+        newnode.next=self.head
+        self.head=newnode
 
-# Access kth element
-def get_kth_element(head, k):
-    x = head
-    for i in range(k):
-        if x is None:
-            return -1
-        else:
-            x = x.next
-    return -1 if x is None else x.data
-
-# Search for a value
-def search(head, value):
-    x = head
-    while x is not None:
-        if x.data == value:
-            return x
-        x = x.next
-    return None
-
-# Insertion at the beginning
-def insert_at_beginning(head, value):
-    new_node = Node(value)
-    new_node.next = head
-    head = new_node
-    return head
-
-# Insertion at the end
-def insert_at_end(head, value):
-    if head is None:
-        return Node(value)
-    
-    x = head
-    while x.next is not None:
-        x = x.next
-    x.next = Node(value)
-    return head
-
-# Insertion at a specified position
-def insert_at_position(head, value, pos):
-    if pos == 0:
-        return insert_at_beginning(head, value)
-    
-    x = head
-    for i in range(pos - 1):
-        if x is None:
-            return head
-        x = x.next
-    
-    if x is None:
-        return head
-    
-    new_node = Node(value)
-    new_node.next = x.next
-    x.next = new_node
-    return head
-
-# Deletion at the head
-def delete_at_head(head):
-    if head is None:
-        return None
-    head = head.next
-    return head
-
-# Deletion at the end
-def delete_at_end(head):
-    if head is None or head.next is None:
-        return None
-    
-    x = head
-    while x.next.next is not None:
-        x = x.next
-    
-    x.next = None
-    return head
-
-# Deletion at a specific position
-def delete_at_position(head, value):
-    if head is None:
-        return None
-    if head.data == value:
-        head = head.next
-        return head
-    
-    x = head
-    while x.next is not None:
-        if x.next.data == value:
-            x.next = x.next.next
-            return head
-        x = x.next
-    return head
-
-# Finding the length of the linked list
-def length_of_linked_list(head):
-    count = 0
-    x = head
-    while x is not None:
-        x = x.next
-        count += 1
-    return count
-
-# Print the linked list
-def print_linked_list(head):
-    x = head
-    while x is not None:
-        print(x.data, end=" -> ")
-        x = x.next
-    print("None")
-
-# User menu
-def user_menu():
-    print("Linked List Operations:")
-    print("1. Access kth element")
-    print("2. Search for a value")
-    print("3. Insert at the beginning")
-    print("4. Insert at the end")
-    print("5. Insert at a specific position")
-    print("6. Delete at the head")
-    print("7. Delete at the end")
-    print("8. Delete at a specific position")
-    print("9. Find length of the linked list")
-    print("10. Print the linked list")
-    print("0. Exit")
-
-# Main function to demonstrate operations
-def main():
-    head = None
-    while True:
-        user_menu()
-        choice = int(input("Enter your choice: "))
+    def insertatpos(self,value,pos):
+        pass
         
-        if choice == 0:
-            break
-        elif choice == 1:
-            k = int(input("Enter the value of k: "))
-            print("kth element:", get_kth_element(head, k))
-        elif choice == 2:
-            value = int(input("Enter the value to search: "))
-            result = search(head, value)
-            if result:
-                print(f"Value {value} found.")
-            else:
-                print(f"Value {value} not found.")
-        elif choice == 3:
-            value = int(input("Enter the value to insert: "))
-            head = insert_at_beginning(head, value)
-        elif choice == 4:
-            value = int(input("Enter the value to insert: "))
-            head = insert_at_end(head, value)
-        elif choice == 5:
-            value = int(input("Enter the value to insert: "))
-            pos = int(input("Enter the position to insert at: "))
-            head = insert_at_position(head, value, pos)
-        elif choice == 6:
-            head = delete_at_head(head)
-        elif choice == 7:
-            head = delete_at_end(head)
-        elif choice == 8:
-            value = int(input("Enter the value to delete: "))
-            head = delete_at_position(head, value)
-        elif choice == 9:
-            print("Length of linked list:", length_of_linked_list(head))
-        elif choice == 10:
-            print_linked_list(head)
-        else:
-            print("Invalid choice, please try again.")
+        
+    def insertend(self,value):
+        newnode=Node(value)
+        if self.head is None:
+            self.head=newnode
+            return
+        x=self.head
+        while x.next is not None:
+            x=x.next
+        x.next=newnode
+        
+    def deletefront(self):
+        if self.head is not None:
+            self.head=self.head.next
 
-if __name__ == "__main__":
-    main()
+    def deleteatpos(self,pos):
+        pass
+        
+        
+    def deletend(self):
+        if self.head is None:
+            return
+        if self.head.next is None:
+            return 
+        x=self.head
+        while x.next.next is not None:
+            x=x.next
+        x.next=None
+        
+    def length(self):
+        count=0
+        x=self.head
+        while x is not None:
+            count+=1
+            x=x.next
+        return count
+        
+    def printll(self):
+        x=self.head
+        while x is not None:
+            print(x.value,end="->")
+            x=x.next
+        #print("none")
+        
+    def access(self,k):
+        x = self.head
+        for i in range(k):
+            if x is None:
+                return -1
+            else:
+                x = x.next
+        return -1 if x is None else x.value
+        
+    def search(self,value):
+        x = self.head
+        while x is not None:
+             if x.value == value:
+                return True
+             x = x.next
+        return None
+        
+
+ll=LinkedList()
+ll.insertbegin(10)
+ll.insertbegin(20)
+ll.insertbegin(30)
+ll.insertend(40)
+ll.insertend(50)
+
+print(ll.printll())
+
+ll.deletefront()
+ll.deletend()
+print(ll.printll())
+
+print(ll.search(10))
+print(ll.access(2))
+            
+        
