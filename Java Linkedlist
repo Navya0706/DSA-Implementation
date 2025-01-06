@@ -109,7 +109,7 @@ public class LinkedList {
         ll.deleteEnd();
         ll.printList();
 
-        System.out.println("Search for 10: " + ll.search(10));
-        System.out.println("Access index 2: " + ll.access(2));
+        System.out.println(ll.search(10));
+        System.out.println(ll.access(2));
     }
 }
